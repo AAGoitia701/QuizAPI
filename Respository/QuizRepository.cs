@@ -49,5 +49,16 @@ namespace QuizAPI.Respository
 
             return question;
         }
+
+        public async Task<Question?> DeleteAsync(int id)
+        {
+            var question = await _context.Questions.FirstOrDefaultAsync(r => r.Id == id);
+            if (question == null) return null;
+
+            _context.Remove(question);
+            await _context.SaveChangesAsync();
+
+            return question;
+        }
     }
 }

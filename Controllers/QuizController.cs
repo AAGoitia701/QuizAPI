@@ -91,5 +91,14 @@ namespace QuizAPI.Controllers
 
             return Ok(question.FromQToQDto());
         }
+
+        [HttpDelete]
+        [Route("quiz/delete")]
+        public async Task<IActionResult> DeleteQ(int id)
+        {
+            var q = await _quizRepo.DeleteAsync(id);
+            if (q == null) return NotFound("The question/answer was not found");
+            return Ok(q.FromQToQDto());
+        }
     }
 }

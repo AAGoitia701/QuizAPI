@@ -12,5 +12,7 @@ namespace QuizAPI.Respository.IRepository
         public Task<Question> CreateAsync(Question q);
 
         public Task<Question> UpdateAsync(int id, UpdateQDto updateDto);
+
+        public Task<Question?> DeleteAsync(int id);
     }
 }
